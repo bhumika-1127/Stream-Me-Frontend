@@ -1,0 +1,68 @@
+/* General content styling with padding to account for a fixed navbar */
+.content {
+    padding-top: 40px; /* Adjust based on your navbar height */
+}
+
+/* Styling for the signup form container */
+.form-signup {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fbeaea; /* Light pink background for the form container */
+    box-shadow: 0 4px 8px rgba(184, 100, 114, 0.3); /* Subtle shadow */
+}
+
+/* Input field styling */
+.form-control {
+    background-color: #fef5f5; /* Light pink background */
+    border: 1px solid #7c383e; /* Darker red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Extra padding for better UX */
+    font-size: 1rem; /* Slightly larger font */
+    color: #b86472; /* Dark pink text color */
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for input fields */
+.form-control:hover {
+    background-color: #f3dcdc; /* Slightly darker pink on hover */
+    border-color: #7c383e; /* Darker red border on hover */
+    box-shadow: 0 0 5px rgba(184, 100, 114, 0.5); /* Subtle shadow on hover */
+}
+
+/* Focus effect for input fields */
+.form-control:focus {
+    background-color: #fce1e1; /* Lighter pink on focus */
+    border-color: #b86472; /* Darker pink border on focus */
+    box-shadow: 0 0 5px rgba(184, 100, 114, 0.8); /* Pink glow on focus */
+}
+
+/* Label styling for form fields */
+.form-floating > label {
+    color: #7c383e; /* Darker red for label */
+}
+
+/* Submit button styling */
+.btn-primary {
+    background-color: #f38b84; /* Custom primary color */
+    border-color: #f38b84; /* Border to match button color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1.1rem; /* Slightly larger font size */
+    padding: 12px; /* Larger padding */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect for submit button */
+.btn-primary:hover {
+    background-color: #e57373; /* Slightly darker on hover */
+    border-color: #e57373; /* Border to match hover color */
+}
+
+/* Link styling */
+a {
+    color: #b86472; /* Pink color for links */
+}
+
+/* Hover effect for links */
+a:hover {
+    color: #7c383e; /* Darker red on hover */
+}

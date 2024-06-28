@@ -14,9 +14,12 @@ Welcome to the Stream Me frontend repository! This Git repository contains the f
 - Allows existing users to sign into their accounts securely.
 
 ### Main Content Page
-- The central hub where users can access the video streaming interface and provides the video streaming functionality where users can host streams.
+- The central hub where users can access the video streaming interface and provides the video streaming functionality where users can host streams on platform like youtube.
 
 ## Usage
 - Clone the repository: `git clone https://github.com/bhumika-1127/Stream-Me-Frontend.git`
 - Install dependencies: `npm install`
 - Run the development server: `npm start`
+
+## Used in Stream Me Project
+After building this frontend, it was integrated into the Stream Me project. You can find the Stream Me project repository [here](https://github.com/bhumika-1127/Stream-Me.git).

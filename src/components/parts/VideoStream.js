@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:4000'); // Connect to the backend server
+const socket = io(`${window.location.origin}`); // Connect to the backend server
 
 const VideoStream = ({ isStreaming, setIsStreaming }) => {
   const videoRef = useRef(null);

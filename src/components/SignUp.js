@@ -19,7 +19,7 @@ function SignUp() {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:4000/signup', { name, email, password });
+      const response = await axios.post(`${window.location.origin}/signup`, { name, email, password });
       if (response.status==201) {
         window.location.href = '/stream';
       } else {

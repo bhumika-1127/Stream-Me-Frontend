@@ -18,7 +18,7 @@ function SignIn() {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:4000/signin', { email, password });
+      const response = await axios.post(`${window.location.origin}/signin`, { email, password });
       if (response.data.user) {
         window.location.href = '/stream';
       } else {

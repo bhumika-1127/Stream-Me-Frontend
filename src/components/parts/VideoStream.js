@@ -60,7 +60,8 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
         autoPlay
         muted
         style={{
-          width: '600px',
+          width: '100%',  // Make the video width 100% of its container
+          maxWidth: '600px',  // Limit maximum width to 600px
           border: '5px solid black',
           borderRadius: '10px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
@@ -73,7 +74,8 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
           value={streamKey} // Bind streamKey to input
           onChange={(e) => setStreamKey(e.target.value)} // Update streamKey on change
           style={{
-            width: '600px',
+            width: '100%',  // Make the video width 100% of its container
+            maxWidth: '600px',
             borderRadius: '5px',
             boxShadow: '0 0 5px rgba(220, 53, 69, 0.5)',
             border: '1px solid white',

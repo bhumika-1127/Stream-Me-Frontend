@@ -7,7 +7,8 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const [mediaStream, setMediaStream] = useState(null);
-  const [streamKey, setStreamKey] = useState(''); // State for storing stream key
+  const [streamKey, setStreamKey] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
   useEffect(() => {
     const getMedia = async () => {
@@ -24,8 +25,8 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
   }, []);
 
   const startRecording = () => {
-    if (mediaStream && streamKey) { // Ensure streamKey is provided
-      socket.emit('startstream', streamKey); // Send streamKey to backend
+    if (mediaStream && streamKey) {
+      socket.emit('startstream', streamKey);
 
       const mediaRecorder = new MediaRecorder(mediaStream, {
         audioBitsPerSecond: 128000,
@@ -48,9 +49,13 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
   const stopRecording = () => {
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
-      socket.emit('stopstream'); // Notify backend to stop the stream
+      socket.emit('stopstream');
       setIsStreaming(false);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -60,37 +65,54 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
         autoPlay
         muted
         style={{
-          width: '100%',  // Make the video width 100% of its container
-          maxWidth: '600px',  // Limit maximum width to 600px
+          width: '100%',
+          maxWidth: '600px',
           border: '5px solid black',
           borderRadius: '10px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
         }}
         className='mb-3'
       ></video>
-      <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
         <input
-          type="text"
-          value={streamKey} // Bind streamKey to input
-          onChange={(e) => setStreamKey(e.target.value)} // Update streamKey on change
+          type={showPassword ? 'text' : 'password'}
+          value={streamKey}
+          onChange={(e) => setStreamKey(e.target.value)}
           style={{
-            width: '100%',  // Make the video width 100% of its container
-            maxWidth: '600px',
+            width: '100%',
             borderRadius: '5px',
             boxShadow: '0 0 5px rgba(220, 53, 69, 0.5)',
             border: '1px solid white',
             padding: '10px',
-            fontSize: '1rem'
+            fontSize: '1rem',
+            paddingRight: '60px', // Space for the link/button
           }}
           placeholder="Enter YouTube streaming key"
           disabled={isStreaming}
         />
+        <button
+          
+          type="button"
+          onClick={togglePasswordVisibility}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            right: '1px',
+            transform: 'translateY(-50%)',
+            background: 'none',
+            border: 'none',
+            color: '#7c383e', // Bootstrap blue color
+            cursor: 'pointer',
+          }}
+        >
+          {showPassword ? 'Hide' : 'Show'}
+        </button>
       </div>
       <div className='m-2'>
-        <button onClick={startRecording} disabled={isStreaming} className="m-2 btn-primary" style={{backgroundColor: 'white'}}>
+        <button onClick={startRecording} disabled={isStreaming} className="m-2 btn-primary" style={{ backgroundColor: 'white' }}>
           Start Streaming
         </button>
-        <button onClick={stopRecording} disabled={!isStreaming} className="m-2 btn-primary" style={{backgroundColor: 'white'}}>
+        <button onClick={stopRecording} disabled={!isStreaming} className="m-2 btn-primary" style={{ backgroundColor: 'white' }}>
           Stop Streaming
         </button>
       </div>
@@ -99,3 +121,4 @@ const VideoStream = ({ isStreaming, setIsStreaming }) => {
 };
 
 export default VideoStream;
+
